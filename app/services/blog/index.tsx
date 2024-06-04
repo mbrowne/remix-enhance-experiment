@@ -1,9 +1,20 @@
 import data from './data'
 
-const articles = data.map((article) => ({
+export type ArticleTeaser = {
+    id: string
+    slug: string
+    url: string
+    title: string
+}
+
+const articles: ArticleTeaser[] = data.map((article) => ({
     ...article,
     url: `/blog/${article.id}/${article.slug}`,
 }))
+
+export function getAllArticles() {
+    return articles
+}
 
 export function getArticleById(id: string) {
     const article = articles.find((a) => a.id === id)

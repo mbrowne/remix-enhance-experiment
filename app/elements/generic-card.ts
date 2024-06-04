@@ -6,14 +6,13 @@ export default function GenericCard({
 }: EnhanceElemArg) {
     return html`
         <style>
-            :host .body {
-                /* test */
-                color: green;
-                font-weight: bold;
-
+            > div {
                 display: flex;
                 flex-direction: row;
-                gap: 4rem;
+                gap: 1rem;
+            }
+            .media img {
+                display: block;
             }
         </style>
         <div class="${attrs.classname}">

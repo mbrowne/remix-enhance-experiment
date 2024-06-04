@@ -1,7 +1,8 @@
 import { createHtmlFunction } from '~/libs/enhance'
-import type { LoaderData } from '~/routes/blog.$id.$slug'
+import type { LoaderData } from '~/routes/blog'
+import { mapConcat } from '~/utils'
 
-export default function ArticlePage(loaderData: LoaderData) {
+export default function BlogIndexPage(loaderData: LoaderData) {
     const html = createHtmlFunction({
         initialState: loaderData,
     })
@@ -9,7 +10,7 @@ export default function ArticlePage(loaderData: LoaderData) {
     return html`
         <!doctype html>
         <head>
-            <title>${loaderData.title}</title>
+            <title>Blog</title>
             <meta charset="utf-8" />
             <meta
                 name="viewport"
@@ -21,12 +22,25 @@ export default function ArticlePage(loaderData: LoaderData) {
                 :before {
                     box-sizing: border-box;
                 }
+                main {
+                    margin-top: 2rem;
+                }
+                article {
+                    display: block;
+                    margin-bottom: 1em;
+                }
             </style>
         </head>
         <body>
             <global-header></global-header>
             <main>
-                <blog-article></blog-article>
+                ${mapConcat(
+                    loaderData.articles,
+                    (article) =>
+                        html`<article>
+                            <a href="${article.url}">${article.title}</a>
+                        </article>`,
+                )}
             </main>
         </body>
     `

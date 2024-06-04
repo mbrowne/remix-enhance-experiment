@@ -8,10 +8,10 @@
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
-    "build:css": "enhance-styles --config=./enhance-style-config.json --output=./public/enhance.css",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@enhance/enhance-style-transform": "^0.1.2",
     "@enhance/ssr": "^4.0.2-next.0",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",

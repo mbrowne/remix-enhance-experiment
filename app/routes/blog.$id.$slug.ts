@@ -1,12 +1,7 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
 import ArticlePage from '~/pages/blog.$id.$slug'
 import { getArticleById, getRelatedArticles } from '~/services/blog'
-
-type ArticleTeaser = {
-    slug: string
-    url: string
-    title: string
-}
+import type { ArticleTeaser } from '~/services/blog'
 
 export type LoaderData = {
     slug: string
@@ -19,7 +14,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
     // console.log('params', params)
 
     const articleId = params.id
-    console.log('articleId: ', articleId)
     const article = getArticleById(articleId)
 
     if (!article) {
