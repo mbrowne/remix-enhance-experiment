@@ -8,31 +8,7 @@ export default function BlogIndexPage(loaderData: LoaderData) {
     })
 
     return html`
-        <!doctype html>
-        <head>
-            <title>Blog</title>
-            <meta charset="utf-8" />
-            <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1"
-            />
-            <style>
-                *,
-                :after,
-                :before {
-                    box-sizing: border-box;
-                }
-                main {
-                    margin-top: 2rem;
-                }
-                article {
-                    display: block;
-                    margin-bottom: 1em;
-                }
-            </style>
-        </head>
-        <body>
-            <global-header></global-header>
+        <default-layout pageTitle="Blog">
             <main>
                 ${mapConcat(
                     loaderData.articles,
@@ -42,6 +18,6 @@ export default function BlogIndexPage(loaderData: LoaderData) {
                         </article>`,
                 )}
             </main>
-        </body>
+        </default-layout>
     `
 }
